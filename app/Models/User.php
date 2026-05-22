@@ -26,23 +26,28 @@ class User extends Authenticatable implements PasskeyUser
      *
      * @return array<string, string>
      */
+
+    protected $fields = [
+        'name',
+        'email',
+        'password',
+        'is_public'
+        ];
+
+    # automatic conversions
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_public' => 'boolean',
         ];
     }
 
-    /**
-     * Get the user's initials
-     */
-    public function initials(): string
+    public function userOrders(): HasMany
     {
-        return Str::of($this->name)
-            ->explode(' ')
-            ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
-            ->implode('');
+        return $this->hasMany(order::class, 'user_id');
     }
+
+
 }
