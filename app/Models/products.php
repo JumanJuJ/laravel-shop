@@ -2,18 +2,29 @@
 
 namespace App\Models;
 
+use Database\Factories\ProductsFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class products extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProductsFactory> */
+    /** @use HasFactory<ProductsFactory> */
     use HasFactory;
 
-    protected $fields = [
+    protected $fillable = [
         'name',
         'description',
         'price',
-        'stock'
+        'stock',
     ];
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(order::class, 'product_id');
+    }
 }
+
+?>
+
+

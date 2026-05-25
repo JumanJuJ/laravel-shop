@@ -2,25 +2,31 @@
 
 namespace App\Models;
 
+use Database\Factories\OrderFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class order extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderFactory> */
+    /** @use HasFactory<OrderFactory> */
     use HasFactory;
 
-    protected $fields = [
+    protected $fillable = [
         'user_id',
         'product_id',
         'quantity',
-        'total_price'
+        'total_price',
     ];
 
-    # db relationships
-    # il model order contiene una relationship con user perché ogni ordine è associato ad un utente che lo ha effettuato , order contiene il campo del model di user   
+    // Ogni ordine appartiene all'utente che lo ha effettuato.
     public function orderedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(products::class, 'product_id');
     }
 }
