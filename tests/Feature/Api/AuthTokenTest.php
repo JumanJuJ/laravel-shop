@@ -25,6 +25,7 @@ class AuthTokenTest extends TestCase
             ->assertCreated()
             ->assertJsonPath('token_type', 'Bearer')
             ->assertJsonPath('user.email', 'mario@example.com')
+            ->assertJsonPath('abilities', ['products:read', 'orders:create'])
             ->assertJsonStructure([
                 'token',
                 'abilities',
@@ -55,6 +56,7 @@ class AuthTokenTest extends TestCase
             ->assertOk()
             ->assertJsonPath('token_type', 'Bearer')
             ->assertJsonPath('user.email', $user->email)
+            ->assertJsonPath('abilities', ['products:read', 'orders:create'])
             ->assertJsonStructure(['token']);
 
         $this->assertDatabaseCount('personal_access_tokens', 1);

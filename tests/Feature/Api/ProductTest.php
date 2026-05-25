@@ -38,4 +38,14 @@ class ProductTest extends TestCase
             ->assertJsonPath('products.0.name', 'T-shirt')
             ->assertJsonPath('products.1.name', 'Felpa');
     }
+
+    public function test_user_can_not_get_products_without_required_token_ability(): void
+    {
+        $user = User::factory()->create();
+        $token = $user->createToken('test-token', ['orders:create'])->plainTextToken;
+
+        $this->getJson('/api/products', [
+            'Authorization' => "Bearer {$token}",
+        ])->assertForbidden();
+    }
 }

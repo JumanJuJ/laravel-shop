@@ -14,10 +14,8 @@ class UserProductController extends Controller
         return $this->productsForUser($request->user());
     }
 
-    public function index(Request $request, User $user): JsonResponse
+    public function index(User $user): JsonResponse
     {
-        abort_unless($request->user()->is($user), 403);
-
         return $this->productsForUser($user);
     }
 

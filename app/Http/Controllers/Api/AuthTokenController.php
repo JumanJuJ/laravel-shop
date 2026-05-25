@@ -14,6 +14,11 @@ class AuthTokenController extends Controller
 {
     use PasswordValidationRules;
 
+    private const DEFAULT_TOKEN_ABILITIES = [
+        'products:read',
+        'orders:create',
+    ];
+
     public function register(Request $request): JsonResponse
     {
         $data = $request->validate([
@@ -62,10 +67,7 @@ class AuthTokenController extends Controller
 
     private function tokenResponse(User $user, string $deviceName, int $status = 200): JsonResponse
     {
-        $token = $user->createToken($deviceName, [
-            'products:read',
-            'orders:create',
-        ]);
+        $token = $user->createToken($deviceName, self::DEFAULT_TOKEN_ABILITIES);
 
         return response()->json([
             'token_type' => 'Bearer',
