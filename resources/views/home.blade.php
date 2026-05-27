@@ -28,10 +28,49 @@
         ],
     ];
 
+    $companyImages = [
+        [
+            'src' => 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80',
+            'alt' => 'Persiane installate su una facciata in pietra',
+        ],
+        [
+            'src' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80',
+            'alt' => 'Porta di ingresso moderna con finiture curate',
+        ],
+    ];
+
+    $companyHighlights = [
+        [
+            'icon' => 'wrench-screwdriver',
+            'title' => 'Prodotti e installazioni',
+            'text' => 'Una gamma completa di serramenti, oscuranti e porte realizzati con posa precisa e materiali durevoli.',
+        ],
+        [
+            'icon' => 'user-group',
+            'title' => 'Servizi e consulenza',
+            'text' => "Ogni progetto viene seguito su misura, dalla scelta delle finiture fino all'assistenza dopo la consegna.",
+        ],
+    ];
+
     $services = [
-        ['icon' => 'wrench-screwdriver', 'title' => 'Installazione', 'text' => 'Posa precisa e gestione ordinata del cantiere.'],
-        ['icon' => 'sparkles', 'title' => 'Personalizzazione', 'text' => 'Finiture, colori e misure progettate intorno agli spazi.'],
-        ['icon' => 'shield-check', 'title' => 'Assistenza', 'text' => 'Controlli, manutenzione e supporto dopo la consegna.'],
+        [
+            'icon' => 'wrench-screwdriver',
+            'title' => 'Installazione',
+            'text' => 'Posa precisa e gestione ordinata del cantiere.',
+            'color' => 'dark',
+        ],
+        [
+            'icon' => 'sparkles',
+            'title' => 'Personalizzazione',
+            'text' => 'Finiture, colori e misure progettate intorno agli spazi.',
+            'color' => 'blue',
+        ],
+        [
+            'icon' => 'shield-check',
+            'title' => 'Assistenza',
+            'text' => 'Controlli, manutenzione e supporto dopo la consegna.',
+            'color' => 'green',
+        ],
     ];
 @endphp
 
@@ -158,6 +197,70 @@
                     </div>
                 </section>
 
+                {{-- Sezione azienda: blocco introduttivo subito dopo la hero con immagini, testo e punti chiave. --}}
+                <section id="chi-siamo" class="bg-white py-20 text-zinc-950 sm:py-28">
+                    <div class="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:px-8">
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            @foreach ($companyImages as $image)
+                                <img
+                                    src="{{ $image['src'] }}"
+                                    alt="{{ $image['alt'] }}"
+                                    class="aspect-[4/5] w-full rounded-lg object-cover"
+                                >
+                            @endforeach
+                        </div>
+
+                        <div class="lg:pl-4">
+                            <p class="text-sm font-semibold uppercase tracking-normal text-blue-700">
+                                Chi siamo
+                            </p>
+
+                            <h2 class="mt-3 text-4xl font-semibold leading-tight tracking-normal text-blue-950 sm:text-5xl">
+                                Serramenti Studio
+                            </h2>
+
+                            <div class="mt-5 grid gap-5 text-base leading-7 text-zinc-600">
+                                <p>
+                                    Da oltre quarant'anni realizziamo e installiamo serramenti in alluminio, porte e oscuranti pensati per durare nel tempo e valorizzare ogni spazio.
+                                </p>
+                                <p>
+                                    Seguiamo ogni cliente con un percorso semplice: ascolto delle esigenze, scelta dei materiali, progettazione su misura e posa curata nei dettagli.
+                                </p>
+                                <p>
+                                    Il nostro obiettivo e offrire prodotti personalizzati, assistenza diretta e un risultato coerente con lo stile della casa o dell'ambiente professionale.
+                                </p>
+                            </div>
+
+                            <p class="mt-8 text-base text-zinc-700">
+                                Ad oggi offriamo:
+                            </p>
+
+                            <div class="mt-6 divide-y divide-zinc-200 border-y border-zinc-200">
+                                @foreach ($companyHighlights as $highlight)
+                                    <div class="grid gap-4 py-5 sm:grid-cols-[2.75rem_1fr]">
+                                        <div class="flex size-11 items-center justify-center text-blue-800">
+                                            <flux:icon :name="$highlight['icon']" class="size-7" />
+                                        </div>
+
+                                        <div>
+                                            <h3 class="text-sm font-semibold text-zinc-950">{{ $highlight['title'] }}</h3>
+                                            <p class="mt-1 text-sm leading-6 text-zinc-600">
+                                                {{ $highlight['text'] }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="mt-8">
+                                <flux:button href="#realizzazioni" variant="primary" icon="arrow-right">
+                                    Guarda tutti i lavori eseguiti
+                                </flux:button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {{-- Sezione prodotti: presenta le categorie principali e usa Alpine per cambiare contenuto senza ricaricare pagina. --}}
                 <section id="prodotti" class="bg-white py-20 dark:bg-zinc-950 sm:py-28">
                     {{-- Contenitore centrato: mantiene allineamento e padding coerenti con header e hero. --}}
@@ -214,7 +317,7 @@
                 </section>
 
                 {{-- Sezione chi siamo: alterna immagini e testo per comunicare metodo, esperienza e fiducia. --}}
-                <section id="chi-siamo" class="border-y border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-900/45 sm:py-28">
+                <section id="metodo" class="border-y border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-900/45 sm:py-28">
                     {{-- Griglia principale chi siamo: immagini a sinistra e testo a destra su desktop. --}}
                     <div class="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
                         {{-- Collage immagini: due foto verticali sfalsate per dare movimento visivo alla sezione. --}}
@@ -264,15 +367,12 @@
                         {{-- Griglia card servizi: una colonna su mobile, tre colonne da md in su. --}}
                         <div class="mt-10 grid gap-4 md:grid-cols-3">
                             @foreach ($services as $service)
-                                {{-- Singola card servizio: icona, titolo e testo breve. --}}
-                                <div class="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
-                                    {{-- Box icona: rende ogni servizio riconoscibile anche a colpo d'occhio. --}}
-                                    <div class="flex size-11 items-center justify-center rounded-md bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
-                                        <flux:icon :name="$service['icon']" class="size-5" />
-                                    </div>
-                                    <h3 class="mt-5 text-lg font-semibold tracking-normal">{{ $service['title'] }}</h3>
-                                    <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">{{ $service['text'] }}</p>
-                                </div>
+                                <x-service-card
+                                    :icon="$service['icon']"
+                                    :title="$service['title']"
+                                    :text="$service['text']"
+                                    :color="$service['color'] ?? 'dark'"
+                                />
                             @endforeach
                         </div>
                     </div>
