@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@layer components {
+
+    .text-body {
+        @apply text-white;
+    }
+
+}
