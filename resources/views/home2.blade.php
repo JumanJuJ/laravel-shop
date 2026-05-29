@@ -4,30 +4,30 @@
     <head>
         @include('partials.head', ['title' => 'Home'])
     </head>
-    @php
-$products = [
-    [
-        'name' => 'Prosciutto 1',
-        'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
-        'image' => '../../images/product.png',
-    ],
-    [
-        'name' => 'Prosciutto 2',
-        'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
-        'image' => '../../images/product.png',
-    ],
-    [
-        'name' => 'Prosciutto 3',
-        'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
-        'image' => '../../images/product.png',
-    ],
+@php
+    $products = [
         [
-        'name' => 'Prosciutto 4',
-        'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
-        'image' => '../../images/product.png',
-    ],
+            'name' => 'Prosciutto 1',
+            'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
+            'image' => '../../images/product.png',
+        ],
+        [
+            'name' => 'Prosciutto 2',
+            'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
+            'image' => '../../images/product.png',
+        ],
+        [
+            'name' => 'Prosciutto 3',
+            'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
+            'image' => '../../images/product.png',
+        ],
+            [
+            'name' => 'Prosciutto 4',
+            'summary' => 'Il prosciutto è un salume ottenuto dalla coscia del maiale, stagionato e spesso affumicato, apprezzato per il suo sapore ricco e la sua consistenza morbida.',
+            'image' => '../../images/product.png',
+        ],
 
-];
+    ];
 @endphp
 
 <body class="font-sans text-zinc-950 antialiased dark:bg-zinc-950 dark:text-white">
