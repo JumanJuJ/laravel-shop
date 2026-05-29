@@ -7,3 +7,34 @@
     }
 
 }
+
+@layer components {
+    .std-container {
+        @apply max-w-7xl px-2 lg:px-8;
+    }
+}
+
+@layer components {
+    .wrapper-container {
+        @apply rounded-lg border border-zinc-200 dark:border-zinc-800 p-6;
+    }
+}
+
+@layer components {
+    .std-padding {
+        @apply py-10 px-2;
+    }
+}
+
+@layer components {
+.auto-grid {
+        @apply mt-8 grid gap-6;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@layer components {
+.hover-layout {
+        @apply rounded-lg transition-colors duration-200 hover:bg-zinc-100;
+    }
+}

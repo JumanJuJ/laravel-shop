@@ -5,20 +5,28 @@
             {{-- usiamo flex per raggruppare logo e nome del sito --}}
             <img src="{{asset('logos/logo.png')}}" alt="Laravel-Shop Logo" class="size-12" />
 
-            <h2 class="text-xl font-bold">
-                Laravel-Shop
-            </h2>
+            <a href="{{ route('home') }}" class="text-xl font-bold hover-layout">
+                <span>Laravel-Shop</span>
+            </a>
         </div>
 
         <nav class="flex items-center">
 
-            <a href="tel:+390000000000" class="flex items-center gap-2 px-4 py-2 font-bold text-zinc-950">
+            <a href="{{ route('about-us') }}" class="flex items-center gap-2 px-4 py-2 font-bold text-zinc-950 hover-layout">
+
+                <span>Chi siamo</span>
+                
+            </a>
+        </nav>
+
+        <nav class="flex items-center">
+
+            <a href="tel:+390000000000" class="flex items-center gap-2 px-4 py-2 font-bold text-zinc-950 hover-layout">
                 <flux:icon name="phone" class="size-4" />
 
                 <span>+39 000 000 0000</span>
                 
             </a>
-
         </nav>
 
     </div>
